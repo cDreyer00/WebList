@@ -3,15 +3,23 @@ window.addEventListener('load', () => {
     const input = document.querySelector("#new-task-input");
     const list_el = document.querySelector("#tasks");
 
+    for (let i = 0; i < localStorage.length; i++) {
+        console.log(localStorage.getItem(localStorage.key(i)));
+        AddItem(null, localStorage.getItem(localStorage.key(i)));
+    }
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
         let task = input.value;
 
         if (!task) {
             alert("fill the task");
             return;
         }
+        AddItem(e, task);
+    });
+
+    function AddItem(e, task) {
+        if (e != null) e.preventDefault();
 
         let task_el = document.createElement("div");
         task_el.classList.add("task");
@@ -51,15 +59,24 @@ window.addEventListener('load', () => {
                 taks_input_el.removeAttribute("readonly");
                 taks_input_el.focus();
                 task_actions_edit_el.textContent = "SAVE";
+                localStorage.removeItem(taks_input_el.value);
             }
             else {
+
                 taks_input_el.setAttribute("readonly", "readonly");
                 task_actions_edit_el.textContent = "EDIT";
+                localStorage.setItem(taks_input_el.value, taks_input_el.value);
             }
         })
 
-        task_actions_delete_el.addEventListener('click', ()=>{
+        task_actions_delete_el.addEventListener('click', () => {
             list_el.removeChild(task_el);
+            localStorage.removeItem(taks_input_el.value);
         });
-    });
+
+        localStorage.setItem(task, task);
+    }
 });
+
+
+
