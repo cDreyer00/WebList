@@ -39,11 +39,11 @@ window.addEventListener('load', () => {
         task_actions_el.classList.add("actions");
 
         let task_actions_edit_el = document.createElement("button");
-        task_actions_edit_el.classList.add("edit");
+        task_actions_edit_el.classList.add("edit", "material-symbols-outlined");
         task_actions_edit_el.innerHTML = "EDIT";
 
         let task_actions_delete_el = document.createElement("button");
-        task_actions_delete_el.classList.add("delete");
+        task_actions_delete_el.classList.add("delete", "material-symbols-outlined");
         task_actions_delete_el.innerHTML = "DELETE";
 
         task_actions_el.appendChild(task_actions_edit_el);
