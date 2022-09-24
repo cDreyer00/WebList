@@ -17,6 +17,7 @@ header input {
     background-color: white;
 
     width: 300px;
+    transform:translateY(-35%);
 }
 
 button {
